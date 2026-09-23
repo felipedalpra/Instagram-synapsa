@@ -1,0 +1,13 @@
+{
+  "name": "synapsa-carrosseis",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "semana": "node src/run-week.mjs",
+    "publicar": "node src/publish.mjs",
+    "aprovar": "node src/aprovar.mjs"
+  },
+  "dependencies": {
+    "playwright": "^1.47.0"
+  }
+}

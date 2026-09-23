@@ -1,0 +1,20 @@
+name: Gerar carrosséis da semana
+on:
+  schedule: [{cron: '0 11 * * 1'}]   # segunda 08:00 BRT
+  workflow_dispatch:
+jobs:
+  gerar:
+    runs-on: ubuntu-latest
+    permissions: {contents: write, pull-requests: write}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: {node-version: 20}
+      - run: npm ci && npx playwright install --with-deps chromium && npm i -g @anthropic-ai/claude-code
+      - run: node src/run-week.mjs
+        env: {CLAUDE_CODE_OAUTH_TOKEN: '${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}', CLAUDE_MODEL: '${{ vars.CLAUDE_MODEL }}'}
+      - uses: peter-evans/create-pull-request@v6
+        with:
+          branch: semana/${{ github.run_id }}
+          title: 'Carrosséis da semana — revisar e aprovar'
+          body: 'Revise os JPGs e legenda.txt de cada pasta em output/. Para aprovar: rode src/aprovar.mjs nas pastas (ou mude status para "aprovado" no meta.json) e faça merge.'

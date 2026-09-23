@@ -1,0 +1,11 @@
+{
+  "posts_por_semana": 3,
+  "dias": [
+    "terca",
+    "quinta",
+    "sabado"
+  ],
+  "hora": "11:30",
+  "fuso": "America/Sao_Paulo",
+  "janela_sem_repetir_semanas": 6
+}

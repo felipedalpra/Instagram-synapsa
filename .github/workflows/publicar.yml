@@ -1,0 +1,15 @@
+name: Publicar aprovados
+on:
+  schedule: [{cron: '0 * * * *'}]
+  workflow_dispatch:
+jobs:
+  publicar:
+    runs-on: ubuntu-latest
+    permissions: {contents: write}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: {node-version: 20}
+      - run: node src/publish.mjs
+        env: {IG_USER_ID: '${{ secrets.IG_USER_ID }}', IG_ACCESS_TOKEN: '${{ secrets.IG_ACCESS_TOKEN }}', PUBLIC_BASE_URL: '${{ vars.PUBLIC_BASE_URL }}'}
+      - run: git config user.name bot && git config user.email bot@synapsa && git add output && git commit -m "status publicado" || true && git push
