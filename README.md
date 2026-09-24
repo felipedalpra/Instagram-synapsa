@@ -47,8 +47,9 @@ src/*.mjs                 plan, generate, render, lint, publish
 
 ## Aprovação
 - O PR mostra os PNGs e o `legenda.txt` de cada carrossel.
+- Para aprovar, clique **Approve** na revisão do PR (aba "Files changed" → "Review changes"). O workflow `aprovar-pr.yml` marca automaticamente todo item pendente como `status: "aprovado"` e faz o merge — sem precisar rodar nada manual. Item com `status: "erro-lint"` não é auto-aprovado (falhou a checagem de qualidade 2x).
 - Para pedir ajuste, comente no PR `/refazer <slug> <o que mudar>`. O workflow roda de novo o generate daquele item com o comentário como feedback.
-- Depois do merge, o `publish` roda de hora em hora e publica os itens com `status: "aprovado"` cuja `data` já passou.
+- Depois do merge (automático ao aprovar), o `publish` roda de hora em hora e publica os itens com `status: "aprovado"` cuja `data` já passou.
 
 ## Por que o visual varia sem sair da marca
 O Claude **não** preenche um template. Ele recebe:

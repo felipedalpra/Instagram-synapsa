@@ -17,4 +17,4 @@ jobs:
         with:
           branch: semana/${{ github.run_id }}
           title: 'Carrosséis da semana — revisar e aprovar'
-          body: 'Revise os JPGs e legenda.txt de cada pasta em output/. Para aprovar: rode src/aprovar.mjs nas pastas (ou mude status para "aprovado" no meta.json) e faça merge.'
+          body: 'Revise os JPGs e legenda.txt de cada pasta em output/. Para aprovar: use o botão "Approve" na aba Files changed (isso marca como aprovado e já faz o merge automaticamente). Para pedir ajuste, comente `/refazer <slug> <o que mudar>`.'
