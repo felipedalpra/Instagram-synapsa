@@ -8,7 +8,8 @@ function claude(prompt, system){
   return new Promise((ok,fail)=>{
     const c=spawn('claude',args,{env:process.env}); let out='',err='';
     c.stdout.on('data',d=>out+=d); c.stderr.on('data',d=>err+=d);
-    c.on('close',code=>{ if(code) return fail(new Error('claude saiu com '+code+': '+err));
+    c.on('error',e=>fail(new Error('spawn error: '+e.message)));
+    c.on('close',code=>{ if(code) return fail(new Error('claude saiu com '+code+' stderr='+JSON.stringify(err)+' stdout='+JSON.stringify(out)));
       const j=JSON.parse(out); if(j.is_error) return fail(new Error(j.result)); ok(j.result); });
     c.stdin.end(prompt);
   });
