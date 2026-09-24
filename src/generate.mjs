@@ -3,7 +3,7 @@
 import {spawn} from 'node:child_process';
 import fs from 'node:fs/promises';
 function claude(prompt, system){
-  const args=['-p','--output-format','json','--max-turns','1','--system-prompt',system];
+  const args=['-p','--output-format','json','--max-turns','1','--tools','','--system-prompt',system];
   if(process.env.CLAUDE_MODEL) args.push('--model',process.env.CLAUDE_MODEL);
   return new Promise((ok,fail)=>{
     const c=spawn('claude',args,{env:process.env}); let out='',err='';
