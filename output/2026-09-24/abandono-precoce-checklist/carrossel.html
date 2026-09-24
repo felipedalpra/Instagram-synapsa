@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>Abandono precoce da terapia</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Poppins',sans-serif;}
+.slide{width:1080px;height:1350px;overflow:hidden;position:relative;}
+.light{background:linear-gradient(160deg,#E1E8FF,#EEEAFB 50%,#E4D4FB);}
+.dark{background:#0B0A2E;}
+.dark::before{content:'';position:absolute;top:-220px;left:-220px;width:620px;height:620px;border-radius:50%;background:radial-gradient(circle,rgba(61,139,255,.4),transparent 70%);}
+.dark::after{content:'';position:absolute;bottom:-240px;right:-240px;width:660px;height:660px;border-radius:50%;background:radial-gradient(circle,rgba(160,77,255,.38),transparent 70%);}
+.mono{font-family:'DM Mono',monospace;text-transform:uppercase;letter-spacing:.12em;}
+.header{position:absolute;top:96px;left:96px;font-size:24px;color:#4A4870;}
+.header.ondark{color:rgba(255,255,255,.65);}
+.grad{background:linear-gradient(90deg,#3D8BFF,#A04DFF);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;}
+.label{font-family:'DM Mono',monospace;text-transform:uppercase;letter-spacing:.12em;font-size:24px;color:#A04DFF;position:absolute;left:96px;}
+.title{font-weight:800;letter-spacing:-0.04em;line-height:1.08;color:#0E0D3A;position:absolute;left:96px;}
+.body-text{font-size:30px;line-height:1.45;color:#4A4870;font-weight:500;position:absolute;left:96px;}
+.card{position:absolute;bottom:96px;right:96px;width:420px;background:#fff;border-radius:32px;box-shadow:0 30px 70px -15px rgba(160,77,255,.28),0 14px 26px -8px rgba(61,139,255,.18);padding:40px 36px;}
+.card .cchead{display:flex;justify-content:space-between;align-items:center;margin-bottom:28px;font-family:'DM Mono',monospace;text-transform:uppercase;letter-spacing:.1em;font-size:24px;color:#5A5880;}
+.row{display:flex;align-items:center;gap:18px;margin-bottom:22px;}
+.row:last-child{margin-bottom:0;}
+.circ{width:32px;height:32px;border-radius:50%;flex-shrink:0;position:relative;border:2.5px solid #D5D1EE;}
+.circ.on{border:none;background:linear-gradient(90deg,#3D8BFF,#A04DFF);}
+.circ.on::after{content:'';position:absolute;width:8px;height:14px;border-bottom:3px solid #fff;border-right:3px solid #fff;transform:rotate(45deg);top:6px;left:11px;}
+.row span{font-size:24px;font-weight:500;}
+.row.on span{color:#0E0D3A;font-weight:600;}
+.row.off span{color:#A9A6C9;}
+.centerbox{position:absolute;left:96px;width:888px;text-align:center;}
+</style>
+</head>
+<body>
+
+<section class="slide light" data-n="1">
+<div class="header mono">ABANDONO PRECOCE · 01/07</div>
+<div class="mono" style="position:absolute;top:220px;left:96px;width:560px;font-size:26px;line-height:1.5;color:#4A4870;">20H DE TERÇA. VOCÊ ABRE A AGENDA DE AMANHÃ.<br>A SESSÃO 4 DO MARCOS SUMIU — SEM AVISO.</div>
+<div class="title" style="top:400px;width:620px;font-size:80px;">Por que os pacientes <span class="grad">somem</span> antes da hora?</div>
+<div class="body-text" style="top:760px;width:460px;font-size:28px;">Quatro motivos que se repetem — devagar, sessão a sessão.</div>
+<div class="card">
+<div class="cchead"><span>PROGRESSO</span><span>0/4</span></div>
+<div class="row off"><div class="circ"></div><span>Expectativa</span></div>
+<div class="row off"><div class="circ"></div><span>Vínculo</span></div>
+<div class="row off"><div class="circ"></div><span>Logística</span></div>
+<div class="row off"><div class="circ"></div><span>Acompanhamento</span></div>
+</div>
+</section>
+
+<section class="slide light" data-n="2">
+<div class="header mono">ABANDONO PRECOCE · 02/07</div>
+<div class="label" style="top:240px;">MOTIVO 01</div>
+<div class="title" style="top:296px;width:520px;font-size:64px;">A pessoa esperava<br>alívio antes da<br>terceira sessão.</div>
+<div class="body-text" style="top:530px;width:520px;">Quando a dor não passa rápido, o paciente confunde processo com fracasso — e desiste antes da virada.</div>
+<div class="card">
+<div class="cchead"><span>PROGRESSO</span><span>1/4</span></div>
+<div class="row on"><div class="circ on"></div><span>Expectativa</span></div>
+<div class="row off"><div class="circ"></div><span>Vínculo</span></div>
+<div class="row off"><div class="circ"></div><span>Logística</span></div>
+<div class="row off"><div class="circ"></div><span>Acompanhamento</span></div>
+</div>
+</section>
+
+<section class="slide light" data-n="3">
+<div class="header mono">ABANDONO PRECOCE · 03/07</div>
+<div class="label" style="top:240px;">MOTIVO 02</div>
+<div class="title" style="top:296px;width:520px;font-size:64px;">O vínculo ainda<br>não tinha se<br>firmado.</div>
+<div class="body-text" style="top:530px;width:520px;">Aliança terapêutica leva tempo. Sem segurança nas primeiras sessões, a sessão 4 não acontece.</div>
+<div class="card">
+<div class="cchead"><span>PROGRESSO</span><span>2/4</span></div>
+<div class="row on"><div class="circ on"></div><span>Expectativa</span></div>
+<div class="row on"><div class="circ on"></div><span>Vínculo</span></div>
+<div class="row off"><div class="circ"></div><span>Logística</span></div>
+<div class="row off"><div class="circ"></div><span>Acompanhamento</span></div>
+</div>
+</section>
+
+<section class="slide light" data-n="4">
+<div class="header mono">ABANDONO PRECOCE · 04/07</div>
+<div class="label" style="top:240px;">MOTIVO 03</div>
+<div class="title" style="top:296px;width:520px;font-size:64px;">Agenda, custo ou<br>distância pesaram<br>mais que a vontade.</div>
+<div class="body-text" style="top:560px;width:520px;">Barreiras práticas não avisam antes. Elas simplesmente vencem a intenção de continuar.</div>
+<div class="card">
+<div class="cchead"><span>PROGRESSO</span><span>3/4</span></div>
+<div class="row on"><div class="circ on"></div><span>Expectativa</span></div>
+<div class="row on"><div class="circ on"></div><span>Vínculo</span></div>
+<div class="row on"><div class="circ on"></div><span>Logística</span></div>
+<div class="row off"><div class="circ"></div><span>Acompanhamento</span></div>
+</div>
+</section>
+
+<section class="slide dark" data-n="5">
+<div class="header mono ondark">ABANDONO PRECOCE · 05/07</div>
+<div class="mono centerbox" style="top:400px;font-size:24px;color:rgba(255,255,255,.6);">DADO REAL</div>
+<div class="grad centerbox" style="top:452px;font-weight:800;font-size:186px;line-height:0.95;letter-spacing:-0.03em;">1 em 5</div>
+<div class="centerbox" style="top:680px;font-size:34px;color:#fff;font-weight:500;line-height:1.4;">pacientes interrompe a terapia antes do planejado.</div>
+<div class="mono" style="position:absolute;bottom:96px;left:96px;width:888px;color:rgba(255,255,255,.55);font-size:24px;letter-spacing:.06em;">SWIFT &amp; GREENBERG, 2012 · J. OF CONSULTING AND CLINICAL PSYCHOLOGY</div>
+</section>
+
+<section class="slide light" data-n="6">
+<div class="header mono">ABANDONO PRECOCE · 06/07</div>
+<div class="label" style="top:240px;">MOTIVO 04</div>
+<div class="title" style="top:296px;width:520px;font-size:64px;">Entre as sessões,<br>o vínculo esfria<br>sozinho.</div>
+<div class="body-text" style="top:530px;width:520px;">Sem contato estruturado entre encontros, cada dúvida vira distância — e a segunda falta vira desistência.</div>
+<div class="card">
+<div class="cchead"><span>PROGRESSO</span><span>4/4</span></div>
+<div class="row on"><div class="circ on"></div><span>Expectativa</span></div>
+<div class="row on"><div class="circ on"></div><span>Vínculo</span></div>
+<div class="row on"><div class="circ on"></div><span>Logística</span></div>
+<div class="row on"><div class="circ on"></div><span>Acompanhamento</span></div>
+</div>
+</section>
+
+<section class="slide light" data-n="7">
+<div class="header mono">ABANDONO PRECOCE · 07/07</div>
+<div class="title" style="top:260px;width:760px;font-size:72px;">Nenhum motivo avisa <span class="grad">antes</span> de acontecer.</div>
+<div class="body-text" style="top:520px;width:700px;">Mas dá pra reconhecer o padrão — e cuidar do vínculo antes da próxima falta.</div>
+<div class="mono" style="position:absolute;top:660px;left:96px;color:#A04DFF;font-size:24px;">SALVE ESTE POST ANTES DA PRÓXIMA SESSÃO 4</div>
+<div class="centerbox" style="bottom:280px;font-size:26px;color:#4A4870;font-weight:500;line-height:1.4;">Synapsa acompanha o vínculo entre sessões com você.</div>
+<img src="{{LOGO_CLARO}}" style="position:absolute;bottom:110px;left:260px;width:560px;">
+</section>
+
+</body>
+</html>
