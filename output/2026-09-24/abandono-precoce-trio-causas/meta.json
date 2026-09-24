@@ -1,0 +1,34 @@
+{
+  "tema": "Abandono precoce da terapia: por que acontece",
+  "direcao": {
+    "metafora": "trio-synapsa",
+    "ritmo": "claro contínuo com um elemento que \"atravessa\" slides (continua na borda do próximo)",
+    "composicao": "cartões flutuantes (branco, raio 32px, sombra suave violeta)",
+    "gancho": "dado surpreendente (com fonte)"
+  },
+  "dia": "terca",
+  "hora": "11:30",
+  "fontes": [
+    {
+      "dado": "19,7%",
+      "fonte": "Swift & Greenberg, 2012, Journal of Consulting and Clinical Psychology",
+      "url": "https://doi.org/10.1037/a0028226"
+    },
+    {
+      "dado": "20%",
+      "fonte": "Barrett et al., 2008, Psychotherapy: Theory, Research, Practice, Training",
+      "url": "https://doi.org/10.1037/0033-3204.45.2.247"
+    }
+  ],
+  "status": "pendente",
+  "erros": [],
+  "arquivos": [
+    "01.jpg",
+    "02.jpg",
+    "03.jpg",
+    "04.jpg",
+    "05.jpg",
+    "06.jpg",
+    "07.jpg"
+  ]
+}

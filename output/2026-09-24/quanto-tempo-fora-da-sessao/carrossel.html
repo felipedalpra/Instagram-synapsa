@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>Synapsa - Tempo fora da sessão</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Poppins:wght@500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+body{background:#0B0A2E;font-family:'Poppins',sans-serif;}
+.slide{width:1080px;height:1350px;overflow:hidden;position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:96px;}
+.dark{background:#0B0A2E;color:#FFFFFF;}
+.light{background:linear-gradient(160deg,#E1E8FF,#EEEAFB 50%,#E4D4FB);color:#0E0D3A;}
+.halo{position:absolute;width:640px;height:640px;border-radius:50%;filter:blur(140px);opacity:0.38;z-index:0;}
+.halo-blue{background:#3D8BFF;top:-160px;left:-160px;}
+.halo-purple{background:#A04DFF;bottom:-160px;right:-160px;}
+.kicker{font-family:'DM Mono',monospace;font-size:24px;letter-spacing:0.12em;text-transform:uppercase;position:absolute;top:96px;left:96px;opacity:0.65;z-index:2;}
+.light .kicker{opacity:0.55;}
+.content{position:relative;z-index:2;display:flex;flex-direction:column;align-items:center;text-align:center;}
+.gradient-text{background-image:linear-gradient(90deg,#3D8BFF,#6E6CFF,#A04DFF);-webkit-background-clip:text;background-clip:text;color:transparent;}
+.eyebrow{font-family:'DM Mono',monospace;font-size:26px;letter-spacing:0.12em;text-transform:uppercase;opacity:0.7;margin-bottom:28px;}
+.hero-word{font-weight:800;font-size:165px;line-height:0.95;letter-spacing:-0.03em;}
+.hero-number{font-weight:800;font-size:300px;line-height:0.9;letter-spacing:-0.04em;}
+.sub{font-size:32px;font-weight:500;line-height:1.35;max-width:820px;margin-top:32px;}
+.source{font-family:'DM Mono',monospace;font-size:24px;letter-spacing:0.1em;text-transform:uppercase;opacity:0.55;position:absolute;bottom:96px;left:96px;right:96px;z-index:2;line-height:1.5;}
+.stack{display:flex;flex-direction:column;align-items:center;gap:6px;}
+.stack div{font-weight:800;font-size:94px;letter-spacing:-0.03em;line-height:1.05;}
+.pretext{font-family:'DM Mono',monospace;font-size:26px;letter-spacing:0.1em;text-transform:uppercase;opacity:0.65;margin-bottom:40px;}
+.close-line{font-weight:700;line-height:1.1;letter-spacing:-0.03em;}
+.logo{width:560px;margin-top:24px;margin-bottom:40px;}
+.cta{font-family:'DM Mono',monospace;font-size:26px;letter-spacing:0.06em;opacity:0.75;max-width:760px;line-height:1.4;}
+.two-line{font-weight:800;line-height:0.95;letter-spacing:-0.03em;}
+</style>
+</head>
+<body>
+
+<section class="slide dark" data-n="1">
+  <div class="halo halo-blue"></div>
+  <div class="halo halo-purple"></div>
+  <span class="kicker">TEMPO FORA DA SESSÃO · 01/07</span>
+  <div class="content">
+    <div class="eyebrow">FORA DO CONSULTÓRIO,</div>
+    <div class="hero-word gradient-text">QUANTO?</div>
+    <p class="sub">Tempo que você gasta cuidando da clínica — e não do paciente.</p>
+  </div>
+</section>
+
+<section class="slide dark" data-n="2">
+  <div class="halo halo-blue"></div>
+  <div class="halo halo-purple"></div>
+  <span class="kicker">TEMPO FORA DA SESSÃO · 02/07</span>
+  <div class="content">
+    <div class="hero-number">10H</div>
+    <p class="sub">por semana, em tarefas administrativas — fora de qualquer sessão.</p>
+  </div>
+  <div class="source">FONTE: SIMPLEPRACTICE, STATE OF PRIVATE PRACTICE REPORT, 2023</div>
+</section>
+
+<section class="slide dark" data-n="3">
+  <div class="halo halo-blue"></div>
+  <div class="halo halo-purple"></div>
+  <span class="kicker">TEMPO FORA DA SESSÃO · 03/07</span>
+  <div class="content">
+    <div class="pretext">ESSAS HORAS VIRAM</div>
+    <div class="stack">
+      <div>PRONTUÁRIO</div>
+      <div>AGENDA</div>
+      <div>COBRANÇA</div>
+      <div class="gradient-text">MENSAGENS</div>
+    </div>
+  </div>
+</section>
+
+<section class="slide light" data-n="4">
+  <span class="kicker">TEMPO FORA DA SESSÃO · 04/07</span>
+  <div class="content">
+    <div class="close-line" style="font-size:88px;">Isso não<br>é clínica.</div>
+    <div class="close-line gradient-text" style="font-size:110px;margin-top:16px;">É gestão.</div>
+    <p class="sub" style="color:#4A4870;">E gestão também merece tempo — só que não precisa ser o seu.</p>
+  </div>
+</section>
+
+<section class="slide dark" data-n="5">
+  <div class="halo halo-blue"></div>
+  <div class="halo halo-purple"></div>
+  <span class="kicker">TEMPO FORA DA SESSÃO · 05/07</span>
+  <div class="content">
+    <div class="hero-number">30%</div>
+    <p class="sub">do trabalho administrativo já pode ser automatizado hoje.</p>
+  </div>
+  <div class="source">FONTE: MCKINSEY GLOBAL INSTITUTE, A FUTURE THAT WORKS, 2017</div>
+</section>
+
+<section class="slide dark" data-n="6">
+  <div class="halo halo-blue"></div>
+  <div class="halo halo-purple"></div>
+  <span class="kicker">TEMPO FORA DA SESSÃO · 06/07</span>
+  <div class="content">
+    <div class="two-line gradient-text" style="font-size:140px;">MAIS<br>TEMPO.</div>
+    <p class="sub">A Synapsa organiza prontuário, agenda e cobrança. Você entra, atende, sai.</p>
+  </div>
+</section>
+
+<section class="slide dark" data-n="7">
+  <div class="halo halo-blue"></div>
+  <div class="halo halo-purple"></div>
+  <span class="kicker">TEMPO FORA DA SESSÃO · 07/07</span>
+  <div class="content">
+    <div class="close-line" style="font-size:92px;">Sua hora<br>vale sessão.</div>
+    <img class="logo" src="{{LOGO_ESCURO}}" alt="Synapsa">
+    <p class="cta">Salve este carrossel para a próxima terça de prontuário atrasado.</p>
+  </div>
+</section>
+
+</body>
+</html>

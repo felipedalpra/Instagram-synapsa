@@ -10,6 +10,39 @@
         "gancho": "pergunta direta ao psicólogo"
       },
       "metafora_usada": "barra de busca do Google atravessando os slides; ranking 1º/2º/3º na capa"
+    },
+    {
+      "data": "2026-09-24",
+      "tema": "Abandono precoce da terapia: por que acontece",
+      "direcao": {
+        "metafora": "trio-synapsa",
+        "ritmo": "claro contínuo com um elemento que \"atravessa\" slides (continua na borda do próximo)",
+        "composicao": "cartões flutuantes (branco, raio 32px, sombra suave violeta)",
+        "gancho": "dado surpreendente (com fonte)"
+      },
+      "metafora_usada": "Os três círculos da logo Synapsa como trio de causas do abandono precoce (expectativa, vínculo, barreiras práticas), formando um cluster que atravessa a borda entre os slides (cortado embaixo/em cima em posições espelhadas) e se resolve num Venn grande no slide escuro do dado, antes de virar a logo completa no fechamento."
+    },
+    {
+      "data": "2026-09-24",
+      "tema": "Quanto tempo você gasta fora da sessão",
+      "direcao": {
+        "metafora": "tipografia-gigante",
+        "ritmo": "escuro-dominante com 1 slide claro de respiro",
+        "composicao": "centralizado-monumental",
+        "gancho": "pergunta direta ao psicólogo"
+      },
+      "metafora_usada": "Tipografia gigante (palavras e números enormes, centralizados e monumentais) num carrossel escuro com halos azul/roxo, quebrado por um único slide claro de respiro que contrapõe 'clínica' x 'gestão'."
+    },
+    {
+      "data": "2026-09-24",
+      "tema": "Terapia online: o que muda na gestão",
+      "direcao": {
+        "metafora": "trio-synapsa",
+        "ritmo": "escuro-dominante com 1 slide claro de respiro",
+        "composicao": "centralizado-monumental",
+        "gancho": "afirmação contraintuitiva"
+      },
+      "metafora_usada": "Os três círculos da logo Synapsa como diagrama tipo Venn representando as três frentes da gestão que mudam na terapia online (consentimento, agenda, prontuário); cada frente ganha um slide com um círculo ampliado e os outros dois reduzidos ao fundo, até se sobreporem novamente no fechamento."
     }
   ]
 }
