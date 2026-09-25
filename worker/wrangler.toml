@@ -1,0 +1,10 @@
+name = "synapsa-aprovar"
+main = "index.js"
+compatibility_date = "2026-09-24"
+
+[vars]
+GITHUB_REPO = "felipedalpra/Instagram-synapsa"
+
+# Secrets (não vão aqui, são setados via `wrangler secret put`):
+#   APPROVAL_SECRET  - mesmo valor do secret GitHub Actions APPROVAL_SECRET
+#   GITHUB_TOKEN     - PAT com permissão de escrita (Contents) só neste repo

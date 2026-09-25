@@ -1,7 +1,7 @@
 # Handoff: Carrosséis automáticos da Synapsa (Instagram)
 
 ## O que é
-Um pipeline semanal **100% automático** que cria, renderiza e publica carrosséis de Instagram da Synapsa, sem revisão humana.
+Um pipeline semanal que **cria, renderiza, envia para aprovação por email e publica** carrosséis de Instagram da Synapsa.
 Cada carrossel tem um **visual diferente**. O que se mantém fixo é só o branding (cores, fontes, logo e tom de voz), descrito em `BRAND.md`.
 
 Quem implementa: um dev ou o Claude Code. Este README basta sozinho.
@@ -13,10 +13,12 @@ segunda 08:00 (cron)
   2. generate  → o Claude Code (assinatura) escreve o conteúdo E o HTML de cada carrossel (visual novo a cada vez)
   3. render    → o Playwright tira um PNG 1080×1350 de cada slide
   4. lint      → confere tamanho mínimo de texto, se algo vazou da área, contraste, logo, fonte dos dados → se falhar, pede ao Claude para corrigir (até 2x)
-  5. commit    → sobe direto pra main com status "aprovado" (item que ainda falhar o lint 2x fica "erro-lint" e não publica)
-  6. publish   → de hora em hora: publica pela Instagram Graph API os itens "aprovado" cuja data agendada já chegou
+  5. commit    → sobe pra main com status "pendente" (item que falhar o lint 2x fica "erro-lint" e não notifica nem publica)
+  6. notificar → manda 1 email (via Resend) por carrossel pendente, com as imagens + botão "Aprovar e publicar"
+                 clique no botão → bate num Cloudflare Worker → marca "aprovado" no meta.json direto no GitHub
+  7. publish   → de hora em hora: publica pela Instagram Graph API os itens "aprovado" cuja data agendada já chegou
 ```
-**⚠️ Não há revisão humana antes de publicar.** Essa é uma decisão explícita (registrada em 2026-09-24) que troca a segurança de uma revisão manual pela conveniência de não precisar mexer em nada — inclusive dados sem fonte e questões de regras do CFP vão ao ar sem checagem humana prévia. Se algo sair errado, o jeito de corrigir é apagar/editar o post direto no Instagram depois.
+**A única ação humana é clicar no botão do email.** Sem terminal, sem GitHub, sem rodar script. Itens com `status: "erro-lint"` (falharam a checagem de qualidade 2x) não geram email e nunca publicam sozinhos.
 
 ## Estrutura
 ```
@@ -30,7 +32,8 @@ state/historico.json      temas e direções já usados (evita repetição)
 assets/synapsa-logo.png   logo com fundo transparente (para fundos claros)
 assets/synapsa-logo-escuro.png  logo para fundos escuros
 referencia/               carrossel "O que é SEO" (PNGs): o padrão de QUALIDADE a seguir, não de layout
-src/*.mjs                 plan, generate, render, lint, publish
+src/*.mjs                 plan, generate, render, notificar, publish
+worker/                   Cloudflare Worker que recebe o clique de "Aprovar" do email
 .github/workflows/        agendamento
 ```
 
@@ -42,11 +45,27 @@ src/*.mjs                 plan, generate, render, lint, publish
    - O consumo sai do limite da assinatura: ~3 carrosséis/semana com até 2 correções cada cabe folgado no Pro.
    - `IG_USER_ID`, `IG_ACCESS_TOKEN`: conta Instagram **Business/Creator** ligada a uma Página do Facebook, app Meta com as permissões `instagram_basic`, `instagram_content_publish` e `pages_read_engagement`. Use um token de longa duração e renove a cada ~60 dias.
    - `PUBLIC_BASE_URL`: a Graph API só aceita **URL pública** de imagem. Sirva `output/` via GitHub Pages, Vercel, S3 ou Cloudinary.
-3. Rodar localmente: `node src/run-week.mjs` → gera `output/AAAA-MM-DD/<slug>/` e já commita com status `"aprovado"`.
+   - `RESEND_API_KEY` (secret): chave da conta Resend usada pra mandar o email de aprovação.
+   - `RESEND_FROM` (variável): remetente, ex. `Synapsa Carrosséis <onboarding@resend.dev>` (ou um domínio verificado no Resend).
+   - `APROVAR_PARA` (variável): email de quem aprova.
+   - `APPROVAL_SECRET` (secret): segredo compartilhado entre `notificar.mjs` (assina o link) e o Worker (confere a assinatura) — mesmo valor nos dois lados.
+   - `APPROVAL_WORKER_URL` (variável): URL pública do Worker (ex. `https://synapsa-aprovar.<subdomínio>.workers.dev`).
+3. Rodar localmente: `node src/run-week.mjs` → gera `output/AAAA-MM-DD/<slug>/` com status `"pendente"`.
+
+## O Worker de aprovação (`worker/`)
+Um Cloudflare Worker sem framework, um arquivo só (`worker/index.js`). Recebe `GET /aprovar?item=<pasta>&sig=<hmac>`, confere a assinatura com `APPROVAL_SECRET`, e usa a API do GitHub (`GITHUB_TOKEN`, um PAT com permissão de escrita só neste repo) pra marcar `status: "aprovado"` no `meta.json` correspondente.
+
+Deploy:
+```bash
+cd worker
+npx wrangler deploy
+npx wrangler secret put APPROVAL_SECRET   # mesmo valor do secret do GitHub Actions
+npx wrangler secret put GITHUB_TOKEN      # PAT (Contents: Read/Write) só deste repo
+```
 
 ## Ajustar ou barrar um post manualmente
 - Pra impedir a publicação de um item específico antes da data agendada: edite `output/.../meta.json` e mude `"status"` pra qualquer coisa diferente de `"aprovado"` (ex.: `"pausado"`), commit direto na `main`.
-- `node src/aprovar.mjs <pasta>` continua disponível pra reaprovar manualmente um item pausado ou corrigido.
+- `node src/aprovar.mjs <pasta>` continua disponível pra aprovar manualmente um item, sem passar pelo email.
 
 ## Por que o visual varia sem sair da marca
 O Claude **não** preenche um template. Ele recebe:

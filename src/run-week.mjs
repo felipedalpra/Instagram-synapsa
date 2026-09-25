@@ -17,7 +17,7 @@ for(const item of itens){
   await fs.writeFile(path.join(dir,'carrossel.html'),out.html);
   await fs.writeFile(path.join(dir,'legenda.txt'),out.legenda+'\n\n'+out.hashtags.join(' '));
   await writeJSON(path.join(dir,'meta.json'),{tema:item.tema,direcao:item.direcao,dia:item.dia,hora:item.hora,fontes:out.fontes,
-    status:rep.erros.length?'erro-lint':'aprovado',erros:rep.erros,arquivos:rep.files.map(f=>path.basename(f))});
+    status:rep.erros.length?'erro-lint':'pendente',erros:rep.erros,arquivos:rep.files.map(f=>path.basename(f))});
   hist.itens.push({data:today(),tema:item.tema,direcao:item.direcao,metafora_usada:out.metafora_usada});
   console.log(out.slug, rep.erros.length?'⚠ '+rep.erros.length+' erros':'ok');
 }

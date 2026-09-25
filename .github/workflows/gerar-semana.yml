@@ -18,3 +18,15 @@ jobs:
           git add output state/historico.json
           git diff --cached --quiet || git commit -m "carrosséis da semana ($(date +%F))"
           git push
+      - run: node src/notificar.mjs
+        env:
+          RESEND_API_KEY: '${{ secrets.RESEND_API_KEY }}'
+          RESEND_FROM: '${{ vars.RESEND_FROM }}'
+          APROVAR_PARA: '${{ vars.APROVAR_PARA }}'
+          APPROVAL_SECRET: '${{ secrets.APPROVAL_SECRET }}'
+          APPROVAL_WORKER_URL: '${{ vars.APPROVAL_WORKER_URL }}'
+          PUBLIC_BASE_URL: '${{ vars.PUBLIC_BASE_URL }}'
+      - run: |
+          git add output
+          git diff --cached --quiet || git commit -m "marcar itens notificados por email"
+          git push
