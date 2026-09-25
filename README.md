@@ -1,7 +1,7 @@
 # Handoff: Carrosséis automáticos da Synapsa (Instagram)
 
 ## O que é
-Um pipeline semanal que **cria, renderiza, envia para aprovação e publica** carrosséis de Instagram da Synapsa.
+Um pipeline semanal **100% automático** que cria, renderiza e publica carrosséis de Instagram da Synapsa, sem revisão humana.
 Cada carrossel tem um **visual diferente**. O que se mantém fixo é só o branding (cores, fontes, logo e tom de voz), descrito em `BRAND.md`.
 
 Quem implementa: um dev ou o Claude Code. Este README basta sozinho.
@@ -13,11 +13,10 @@ segunda 08:00 (cron)
   2. generate  → o Claude Code (assinatura) escreve o conteúdo E o HTML de cada carrossel (visual novo a cada vez)
   3. render    → o Playwright tira um PNG 1080×1350 de cada slide
   4. lint      → confere tamanho mínimo de texto, se algo vazou da área, contraste, logo, fonte dos dados → se falhar, pede ao Claude para corrigir (até 2x)
-  5. review    → abre um Pull Request com as prévias + legenda  ← o Felipe aprova ou pede ajuste
-merge do PR
-  6. publish   → em cada data agendada: sobe as imagens e publica pela Instagram Graph API
+  5. commit    → sobe direto pra main com status "aprovado" (item que ainda falhar o lint 2x fica "erro-lint" e não publica)
+  6. publish   → de hora em hora: publica pela Instagram Graph API os itens "aprovado" cuja data agendada já chegou
 ```
-**Nada vai ao ar sem aprovação humana.** Dados com fonte e as regras do CFP precisam de revisão.
+**⚠️ Não há revisão humana antes de publicar.** Essa é uma decisão explícita (registrada em 2026-09-24) que troca a segurança de uma revisão manual pela conveniência de não precisar mexer em nada — inclusive dados sem fonte e questões de regras do CFP vão ao ar sem checagem humana prévia. Se algo sair errado, o jeito de corrigir é apagar/editar o post direto no Instagram depois.
 
 ## Estrutura
 ```
@@ -43,13 +42,11 @@ src/*.mjs                 plan, generate, render, lint, publish
    - O consumo sai do limite da assinatura: ~3 carrosséis/semana com até 2 correções cada cabe folgado no Pro.
    - `IG_USER_ID`, `IG_ACCESS_TOKEN`: conta Instagram **Business/Creator** ligada a uma Página do Facebook, app Meta com as permissões `instagram_basic`, `instagram_content_publish` e `pages_read_engagement`. Use um token de longa duração e renove a cada ~60 dias.
    - `PUBLIC_BASE_URL`: a Graph API só aceita **URL pública** de imagem. Sirva `output/` via GitHub Pages, Vercel, S3 ou Cloudinary.
-3. Rodar localmente: `node src/run-week.mjs` → gera `output/AAAA-MM-DD/<slug>/`.
+3. Rodar localmente: `node src/run-week.mjs` → gera `output/AAAA-MM-DD/<slug>/` e já commita com status `"aprovado"`.
 
-## Aprovação
-- O PR mostra os PNGs e o `legenda.txt` de cada carrossel.
-- Para aprovar, clique **Approve** na revisão do PR (aba "Files changed" → "Review changes"). O workflow `aprovar-pr.yml` marca automaticamente todo item pendente como `status: "aprovado"` e faz o merge — sem precisar rodar nada manual. Item com `status: "erro-lint"` não é auto-aprovado (falhou a checagem de qualidade 2x).
-- Para pedir ajuste, comente no PR `/refazer <slug> <o que mudar>`. O workflow roda de novo o generate daquele item com o comentário como feedback.
-- Depois do merge (automático ao aprovar), o `publish` roda de hora em hora e publica os itens com `status: "aprovado"` cuja `data` já passou.
+## Ajustar ou barrar um post manualmente
+- Pra impedir a publicação de um item específico antes da data agendada: edite `output/.../meta.json` e mude `"status"` pra qualquer coisa diferente de `"aprovado"` (ex.: `"pausado"`), commit direto na `main`.
+- `node src/aprovar.mjs <pasta>` continua disponível pra reaprovar manualmente um item pausado ou corrigido.
 
 ## Por que o visual varia sem sair da marca
 O Claude **não** preenche um template. Ele recebe:
