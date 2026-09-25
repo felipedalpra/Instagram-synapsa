@@ -1,0 +1,24 @@
+name: Teste - só notificar
+on:
+  workflow_dispatch:
+jobs:
+  notificar:
+    runs-on: ubuntu-latest
+    permissions: {contents: write}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: {node-version: 20}
+      - run: node src/notificar.mjs
+        env:
+          RESEND_API_KEY: '${{ secrets.RESEND_API_KEY }}'
+          RESEND_FROM: '${{ vars.RESEND_FROM }}'
+          APROVAR_PARA: '${{ vars.APROVAR_PARA }}'
+          APPROVAL_SECRET: '${{ secrets.APPROVAL_SECRET }}'
+          APPROVAL_WORKER_URL: '${{ vars.APPROVAL_WORKER_URL }}'
+          PUBLIC_BASE_URL: '${{ vars.PUBLIC_BASE_URL }}'
+      - run: |
+          git config user.name bot && git config user.email bot@synapsa
+          git add output
+          git diff --cached --quiet || git commit -m "marcar itens notificados por email (teste)"
+          git push
