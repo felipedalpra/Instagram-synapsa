@@ -12,4 +12,8 @@ jobs:
         with: {node-version: 20}
       - run: node src/publish.mjs
         env: {IG_USER_ID: '${{ secrets.IG_USER_ID }}', IG_ACCESS_TOKEN: '${{ secrets.IG_ACCESS_TOKEN }}', PUBLIC_BASE_URL: '${{ vars.PUBLIC_BASE_URL }}'}
-      - run: git config user.name bot && git config user.email bot@synapsa && git add output && git commit -m "status publicado" || true && git push
+      - run: |
+          git config user.name bot && git config user.email bot@synapsa
+          git add output
+          git diff --cached --quiet || git commit -m "status publicado"
+          for i in 1 2 3 4 5; do git push && break; git pull --rebase --autostash; sleep $((RANDOM % 5 + 1)); done
