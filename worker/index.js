@@ -40,7 +40,12 @@ export default {
     });
     if (!putRes.ok) return html('Erro ao salvar a aprovação no GitHub: ' + await putRes.text(), 500);
 
-    return html(`✅ "${meta.tema}" aprovado! Vai publicar automaticamente em ${meta.dia} às ${meta.hora}.`, 200);
+    const dispatchRes = await fetch(
+      `https://api.github.com/repos/${env.GITHUB_REPO}/actions/workflows/publicar.yml/dispatches`,
+      {method: 'POST', headers: ghHeaders, body: JSON.stringify({ref: 'main'})},
+    );
+    if (dispatchRes.ok) return html(`✅ "${meta.tema}" aprovado! Publicando agora — deve aparecer no Instagram em poucos minutos.`, 200);
+    return html(`✅ "${meta.tema}" aprovado! Não consegui disparar a publicação na hora (${dispatchRes.status}), mas o job horário vai publicar em até 1h.`, 200);
   },
 };
 

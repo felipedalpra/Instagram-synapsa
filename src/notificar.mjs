@@ -35,7 +35,7 @@ for(const p of await achar('output').catch(()=>[])){
   const html=`
     <div style="font-family:sans-serif;max-width:480px;margin:0 auto">
       <h2>Novo carrossel: ${m.tema}</h2>
-      <p><strong>Agendado:</strong> ${m.dia} às ${m.hora}</p>
+      <p>Aprovando, publica no Instagram na hora.</p>
       ${imgs.map(u=>`<img src="${u}" width="100%" style="border-radius:12px;margin-bottom:8px">`).join('')}
       <p style="white-space:pre-wrap;background:#f5f5f5;padding:12px;border-radius:8px">${legenda}</p>
       <p style="text-align:center;margin:24px 0">

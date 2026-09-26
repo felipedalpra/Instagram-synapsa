@@ -7,4 +7,6 @@ GITHUB_REPO = "felipedalpra/Instagram-synapsa"
 
 # Secrets (não vão aqui, são setados via `wrangler secret put`):
 #   APPROVAL_SECRET  - mesmo valor do secret GitHub Actions APPROVAL_SECRET
-#   GITHUB_TOKEN     - PAT com permissão de escrita (Contents) só neste repo
+#   GITHUB_TOKEN     - PAT fine-grained só neste repo, com:
+#                        Contents: Read and write (marcar meta.json como aprovado)
+#                        Actions: Read and write  (disparar o workflow publicar.yml na hora)
