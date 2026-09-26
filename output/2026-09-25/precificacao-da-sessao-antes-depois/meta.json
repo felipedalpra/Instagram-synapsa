@@ -15,7 +15,7 @@
       "url": "https://cfp.org.br/"
     }
   ],
-  "status": "aprovado",
+  "status": "publicado",
   "erros": [],
   "arquivos": [
     "01.jpg",
@@ -26,5 +26,7 @@
     "06.jpg",
     "07.jpg"
   ],
-  "notificado": true
+  "notificado": true,
+  "ig_media_id": "18038868665836183",
+  "publicado_em": "2026-09-26T18:14:07.194Z"
 }
