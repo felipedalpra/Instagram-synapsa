@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>Como reduzir faltas e cancelamentos</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Poppins:wght@500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{margin:0;font-family:'Poppins',sans-serif}
+.slide{width:1080px;height:1350px;position:relative;overflow:hidden;padding:96px}
+.claro{background:linear-gradient(160deg,#E1E8FF 0%,#EEEAFB 52%,#E4D4FB 100%);color:#0E0D3A}
+.escuro{background:#0B0A2E;color:#FFFFFF}
+.escuro:before,.escuro:after{content:'';position:absolute;width:650px;height:650px;border-radius:50%;filter:blur(4px);opacity:.38}
+.escuro:before{top:-330px;left:-280px;background:radial-gradient(circle,#3D8BFF,transparent 70%)}
+.escuro:after{right:-300px;bottom:-330px;background:radial-gradient(circle,#A04DFF,transparent 70%)}
+.mono{font-family:'DM Mono',monospace;text-transform:uppercase;letter-spacing:.12em;font-size:24px;font-weight:500}
+.top{position:absolute;top:96px;left:96px;right:96px;display:flex;justify-content:space-between;z-index:4}
+.big{font-size:150px;line-height:.88;letter-spacing:-.055em;font-weight:800}
+.grad{background:linear-gradient(90deg,#3D8BFF,#A04DFF);-webkit-background-clip:text;background-clip:text;color:transparent}
+.card{position:absolute;left:96px;right:96px;bottom:96px;background:#FFFFFF;color:#0E0D3A;border-radius:32px;padding:48px;box-shadow:0 24px 70px rgba(110,108,255,.18);z-index:3}
+.card p{font-size:34px;line-height:1.35;color:#4A4870;margin-top:18px}
+.card strong{color:#0E0D3A}
+.clock{position:absolute;top:260px;left:96px;font-size:214px;line-height:.9;font-weight:800;letter-spacing:-.06em}
+.ghost{position:absolute;font-size:300px;line-height:.8;font-weight:800;letter-spacing:-.07em;color:rgba(255,255,255,.055);white-space:nowrap}
+.ghost:before{content:attr(data-word)}
+.step{position:absolute;top:260px;left:96px;right:96px}
+.step .big{max-width:900px}
+.bubble{margin-top:62px;width:750px;border:2px solid rgba(110,108,255,.28);background:rgba(255,255,255,.68);border-radius:32px;padding:34px 38px;font-size:30px;line-height:1.35;color:#4A4870}
+.reply{display:inline-block;margin-top:24px;background:#0E0D3A;color:#FFFFFF;border-radius:999px;padding:18px 28px;font-size:26px}
+.stat{position:absolute;top:310px;left:96px;right:96px;text-align:center;z-index:3}
+.stat .number{font-size:300px;line-height:.85;font-weight:800;letter-spacing:-.065em}
+.stat p{font-size:34px;line-height:1.35;max-width:720px;margin:42px auto 0;color:rgba(255,255,255,.82)}
+.source{position:absolute;left:96px;right:96px;bottom:96px;color:rgba(255,255,255,.56);z-index:3}
+.rule{height:2px;background:linear-gradient(90deg,#3D8BFF,#A04DFF);margin:34px 0}
+.mini{font-size:28px;line-height:1.35;color:#4A4870}
+.final{position:absolute;left:96px;right:96px;top:250px;text-align:center}
+.final h2{font-size:92px;line-height:1;letter-spacing:-.045em}
+.final p{font-size:28px;color:#4A4870;margin-top:30px}
+.logo{display:block;width:560px;margin:80px auto 0}
+</style>
+</head>
+<body>
+<section class="slide claro" data-n="1">
+  <div class="top mono"><span>AGENDA CLÍNICA</span><span>01/07</span></div>
+  <div class="clock">10:42</div>
+  <div class="card">
+    <div class="mono" style="color:#6E6CFF">CENA DE HOJE</div>
+    <div class="rule"></div>
+    <div class="big" style="font-size:76px">A sessão começou.<br><span class="grad">O paciente não.</span></div>
+  </div>
+</section>
+
+<section class="slide escuro" data-n="2">
+  <div class="top mono"><span>AGENDA CLÍNICA</span><span>02/07</span></div>
+  <div class="ghost" data-word="LEMBRE" style="top:210px;left:-35px"></div>
+  <div class="card">
+    <div class="big" style="font-size:84px">LEMBRE.</div>
+    <p>Envie um aviso claro antes da sessão. <strong>Data, hora e formato</strong> — sem texto demais.</p>
+  </div>
+</section>
+
+<section class="slide claro" data-n="3">
+  <div class="top mono"><span>AGENDA CLÍNICA</span><span>03/07</span></div>
+  <div class="step">
+    <div class="big">CONFIRME.</div>
+    <div class="bubble">“Seu horário está reservado. Posso confirmar sua presença?”<br><span class="reply">SIM, ESTAREI LÁ</span></div>
+  </div>
+  <div class="card">
+    <div class="mini">Uma resposta simples transforma o lembrete em <strong>combinado</strong>.</div>
+  </div>
+</section>
+
+<section class="slide escuro" data-n="4">
+  <div class="top mono"><span>AGENDA CLÍNICA</span><span>04/07</span></div>
+  <div class="stat">
+    <div class="number grad">−25%</div>
+    <p>de faltas em consultas com notificações por texto, segundo uma meta-análise.</p>
+  </div>
+  <div class="source mono">MCCOMBIE ET AL. · BMJ OPEN, 2016</div>
+</section>
+
+<section class="slide claro" data-n="5">
+  <div class="top mono"><span>AGENDA CLÍNICA</span><span>05/07</span></div>
+  <div class="step">
+    <div class="big">REMARQUE.</div>
+    <div class="bubble">“Não vou conseguir.”<br><span style="display:block;margin-top:20px;color:#0E0D3A;font-weight:700">Tudo bem. Veja aqui os próximos horários.</span></div>
+  </div>
+  <div class="card">
+    <div class="mini">Cancelar precisa ser fácil. <strong>Reagendar também.</strong></div>
+  </div>
+</section>
+
+<section class="slide escuro" data-n="6">
+  <div class="top mono"><span>AGENDA CLÍNICA</span><span>06/07</span></div>
+  <div class="ghost" data-word="REGISTRE" style="top:220px;left:-50px"></div>
+  <div class="card">
+    <div class="big" style="font-size:82px">REGISTRE.</div>
+    <p>Observe horários, frequência e motivos. <strong>Padrão ajuda a ajustar a agenda.</strong> Culpa, não.</p>
+  </div>
+</section>
+
+<section class="slide claro" data-n="7">
+  <div class="top mono"><span>AGENDA CLÍNICA</span><span>07/07</span></div>
+  <div class="final">
+    <h2>Menos cobrança.<br><span class="grad">Mais combinado.</span></h2>
+    <p class="mono">SALVE PARA REVISAR SUA ROTINA DE CONFIRMAÇÃO</p>
+    <img class="logo" src="{{LOGO_CLARO}}">
+  </div>
+</section>
+</body>
+</html>

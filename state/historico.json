@@ -54,6 +54,17 @@
         "gancho": "pergunta direta ao psicólogo"
       },
       "metafora_usada": "Dado-como-forma: grade de pontos (10x8 e 10x10) onde a proporção de pontos acesos com gradiente representa a estatística de faltas evitadas; grid bleeding cortado pela borda do slide (sangrado) em todos os slides, culminando no slide escuro com grid completo 10x10 e o número -17% em destaque."
+    },
+    {
+      "data": "2026-09-28",
+      "tema": "Como reduzir faltas e cancelamentos",
+      "direcao": {
+        "metafora": "tipografia-gigante",
+        "ritmo": "alternado claro/escuro",
+        "composicao": "cartões flutuantes (branco, raio 32px, sombra suave violeta)",
+        "gancho": "cena cotidiana (\"10:42. A sessão começou.\")"
+      },
+      "metafora_usada": "Verbos gigantes — LEMBRE, CONFIRME, REMARQUE e REGISTRE — atravessam fundos alternados enquanto cartões de interface mostram mensagens práticas de confirmação."
     }
   ]
 }

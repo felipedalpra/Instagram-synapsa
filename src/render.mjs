@@ -1,8 +1,13 @@
 import {chromium} from 'playwright';
 import path from 'node:path';
+import fs from 'node:fs/promises';
 export async function render(html, outDir){
-  const abs=p=>'file://'+path.resolve(p);
-  html=html.replaceAll('{{LOGO_CLARO}}',abs('assets/synapsa-logo.png')).replaceAll('{{LOGO_ESCURO}}',abs('assets/synapsa-logo-escuro.png'));
+  const [logoClaro,logoEscuro]=await Promise.all([
+    fs.readFile('assets/synapsa-logo.png'),
+    fs.readFile('assets/synapsa-logo-escuro.png')
+  ]);
+  const data=b=>'data:image/png;base64,'+b.toString('base64');
+  html=html.replaceAll('{{LOGO_CLARO}}',data(logoClaro)).replaceAll('{{LOGO_ESCURO}}',data(logoEscuro));
   const b=await chromium.launch(); const p=await b.newPage({viewport:{width:1080,height:1350}});
   await p.setContent(html,{waitUntil:'networkidle'}); await p.evaluate(()=>document.fonts.ready);
   const report=await p.evaluate(()=>{
@@ -18,7 +23,8 @@ export async function render(html, outDir){
         if(!/Poppins|DM Mono/.test(cs.fontFamily)) erros.push('slide '+(i+1)+': fonte fora da marca '+cs.fontFamily);
       });
     });
-    const last=slides.at(-1); if(!last?.querySelector('img[src*="synapsa-logo"]')) erros.push('último slide sem logo');
+    const last=slides.at(-1), logo=last?.querySelector('img');
+    if(!logo||!logo.complete||!logo.naturalWidth) erros.push('último slide sem logo');
     if(slides.length<5||slides.length>8) erros.push('número de slides '+slides.length+' (esperado 5–8)');
     return {n:slides.length,erros:[...new Set(erros)].slice(0,25)};
   });

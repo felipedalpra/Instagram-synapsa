@@ -1,0 +1,29 @@
+{
+  "tema": "Como reduzir faltas e cancelamentos",
+  "direcao": {
+    "metafora": "tipografia-gigante",
+    "ritmo": "alternado claro/escuro",
+    "composicao": "cartões flutuantes (branco, raio 32px, sombra suave violeta)",
+    "gancho": "cena cotidiana (\"10:42. A sessão começou.\")"
+  },
+  "dia": "segunda",
+  "hora": "11:30",
+  "fontes": [
+    {
+      "dado": "25% menos faltas",
+      "fonte": "McCombie et al., BMJ Open, 2016",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/27798006/"
+    }
+  ],
+  "status": "pendente",
+  "erros": [],
+  "arquivos": [
+    "01.jpg",
+    "02.jpg",
+    "03.jpg",
+    "04.jpg",
+    "05.jpg",
+    "06.jpg",
+    "07.jpg"
+  ]
+}
