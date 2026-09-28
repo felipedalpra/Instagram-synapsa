@@ -43,6 +43,17 @@
         "gancho": "afirmação contraintuitiva"
       },
       "metafora_usada": "Trio da logo (3 círculos) como diagrama que se desloca ao longo do carrossel — um círculo ganha destaque por vez para marcar 'pode' / 'não pode' / 'encontro', com dois slides escuros de dado no meio (Pew Research e Sinsky et al.)"
+    },
+    {
+      "data": "2026-09-28",
+      "tema": "Lembretes automáticos de consulta",
+      "direcao": {
+        "metafora": "dado-como-forma",
+        "ritmo": "claro-dominante com 1 slide escuro de impacto",
+        "composicao": "sangrado (elemento cortado pela borda do slide)",
+        "gancho": "pergunta direta ao psicólogo"
+      },
+      "metafora_usada": "Dado-como-forma: grade de pontos (10x8 e 10x10) onde a proporção de pontos acesos com gradiente representa a estatística de faltas evitadas; grid bleeding cortado pela borda do slide (sangrado) em todos os slides, culminando no slide escuro com grid completo 10x10 e o número -17% em destaque."
     }
   ]
 }
