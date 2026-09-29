@@ -42,3 +42,10 @@
 
 ## Proibido
 Emoji nos slides, fotos de banco de imagem, ilustração em SVG figurativa (pessoas, cérebros, lâmpadas), gradientes arco-íris, sombras pesadas, texto vazando da área e mais de 2 cores de fundo por carrossel.
+
+## Assets reais e privacidade
+- Prefira prints reais da plataforma, recortes de funcionalidades, frames de demonstração e materiais aprovados da marca.
+- Nunca mostre nome, foto, telefone, conteúdo clínico, diagnóstico ou qualquer dado identificável de paciente.
+- Não use arquivos de equipe, eventos ou WhatsApp automaticamente; eles exigem curadoria e autorização humana antes de entrar em `assets/library/`.
+- Prints devem ser grandes o bastante para cumprir uma função visual. Não use uma tela inteira como miniatura ilegível.
+- Não invente interface nem altere um print de modo que sugira uma funcionalidade inexistente.

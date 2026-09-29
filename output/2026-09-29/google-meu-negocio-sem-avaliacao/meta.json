@@ -1,0 +1,138 @@
+{
+  "tema": "Google Meu Negócio para psicólogos",
+  "direcao": {
+    "metafora": "checklist-progressivo",
+    "ritmo": "alternado claro/escuro",
+    "composicao": "cartões flutuantes (branco, raio 32px, sombra suave violeta)",
+    "gancho": "afirmação contraintuitiva"
+  },
+  "familia": "educacao-profissional",
+  "brief": {
+    "familia": "educacao-profissional",
+    "objetivo": "Ensinar o psicólogo a otimizar o Perfil da Empresa no Google (Google Meu Negócio) sem depender de avaliação de paciente, trocando a tática mais comum de marketing local por ações que não colocam o sigilo em risco.",
+    "alternativas_capa": [
+      {
+        "gancho": "A dica de marketing mais comum pode quebrar seu sigilo",
+        "visual": "Fundo noite (#0B0A2E) com halos radiais azul e roxo a 35%. Cabeçalho mono 'GOOGLE MEU NEGÓCIO · 01/08'. Título Poppins 800, 96-110px, quebrado em 3 linhas curtas; a palavra 'sigilo' recebe o gradiente da marca (90°, azul→violeta→roxo). Nenhum ícone, nenhuma imagem — só tipografia."
+      },
+      {
+        "gancho": "Ninguém te contou a parte ruim de pedir avaliação",
+        "visual": "Fundo claro-dominante (gradiente 160° claro-1→claro-3). Cartão flutuante branco (raio 32px, sombra violeta suave) centralizado com um ícone geométrico simples de estrela riscada (elemento gráfico, não figurativo). Título Poppins em tinta, mono label 'ANTES DE PEDIR AVALIAÇÃO' acima do cartão."
+      },
+      {
+        "gancho": "Perfil completo atrai 70% mais visita — sem depoimento",
+        "visual": "Fundo claro, número-herói '70%' em até 300px com gradiente da marca, ocupando o centro do slide. Fonte mono pequena abaixo citando Google. Título de apoio pequeno acima do número."
+      }
+    ],
+    "gancho_escolhido": "A dica de marketing mais comum pode quebrar seu sigilo",
+    "promessa_editorial": "Mostrar o que realmente funciona pra aparecer no Google sem pedir avaliação de paciente — com fontes reais, sem gambiarra e sem risco ético.",
+    "assets_escolhidos": [
+      "{{MEDIA_03}}",
+      "{{MEDIA_01}}"
+    ],
+    "slides": [
+      {
+        "papel": "capa",
+        "mensagem": "A dica de marketing mais comum (pedir avaliação de cliente) pode quebrar o sigilo do seu paciente. Este carrossel mostra o que fazer no lugar.",
+        "visual": "Fundo noite com halos azul/roxo. Cabeçalho mono 'GOOGLE MEU NEGÓCIO · 01/08'. Título Poppins 800 gigante, gradiente só na palavra 'sigilo'. Sem imagem, sem ícone."
+      },
+      {
+        "papel": "problema",
+        "mensagem": "Pergunta direta: pedir pro paciente avaliar seu perfil no Google ajuda a aparecer mais nas buscas? A maioria dos psicólogos acha que sim.",
+        "visual": "Fundo claro. Cabeçalho mono 'GOOGLE MEU NEGÓCIO · 02/08'. Pergunta em Poppins 700 grande, alinhada à esquerda, respiro generoso. Sem cartão — pergunta pura, ocupando o slide."
+      },
+      {
+        "papel": "explicacao",
+        "mensagem": "Resposta: não é recomendado. Uma avaliação pública liga o nome do paciente a 'atendimento psicológico' — isso é dado sensível, mesmo que ele concorde em postar. O Código de Ética do Psicólogo (CFP) coloca o sigilo como dever do profissional, não uma escolha do paciente.",
+        "visual": "Fundo noite. Cartão flutuante branco (raio 32px, sombra violeta) centralizado com o texto da explicação em Poppins 500 + DM Mono citando 'Código de Ética Profissional do Psicólogo — CFP' como fonte, canto inferior do cartão."
+      },
+      {
+        "papel": "problema",
+        "mensagem": "Segunda pergunta: então dá pra aparecer bem no mapa do Google mesmo sem nenhuma avaliação?",
+        "visual": "Fundo claro. Cabeçalho mono 'GOOGLE MEU NEGÓCIO · 04/08'. Pergunta grande em Poppins 700, mesma composição da pergunta 1 pra criar padrão de pergunta-resposta reconhecível."
+      },
+      {
+        "papel": "passo",
+        "mensagem": "Resposta: sim. O Google pondera categoria certa, horário sempre atualizado, fotos reais do espaço (nunca de paciente) e, principalmente, um site vinculado que mostre quem você é. Use {{MEDIA_03}} como exemplo: uma página pública real, sem depoimento, com suas informações e agenda.",
+        "visual": "Fundo noite. Título curto 'O que pesa de verdade' em Poppins. Print real {{MEDIA_03}} (perfil público do psicólogo) em cartão flutuante branco com raio 32px, levemente inclinado, ocupando 60% da largura; ao lado, 3 linhas mono curtas: 'CATEGORIA CORRETA · HORÁRIO ATUALIZADO · FOTOS DO ESPAÇO'."
+      },
+      {
+        "papel": "prova",
+        "mensagem": "Dado real: perfis completos no Google têm 70% mais chance de atrair visita ao local, segundo dados oficiais do próprio Google sobre o Perfil da Empresa.",
+        "visual": "Fundo escuro com halos azul/roxo. Número-herói '70%' em até 320px com gradiente da marca ocupando o centro. Abaixo, uma linha de apoio curta em Poppins 500 e a fonte em DM Mono: 'FONTE: GOOGLE — PERFIL DA EMPRESA'."
+      },
+      {
+        "papel": "passo",
+        "mensagem": "Recapitulação prática: 3 coisas pra revisar essa semana sem envolver nenhum paciente — categoria e descrição do perfil, horário de fato atualizado, e o link do perfil público (como o de {{MEDIA_01}}) no lugar do 'site' genérico.",
+        "visual": "Fundo claro. Cabeçalho mono 'GOOGLE MEU NEGÓCIO · 07/08'. Três cartões flutuantes brancos (raio 32px, sombra violeta) lado a lado ou empilhados, cada um numerado em DM Mono ('01','02','03') com uma ação curta em Poppins; um deles mostra {{MEDIA_01}} em miniatura funcional (não decorativa) como exemplo do link a usar."
+      },
+      {
+        "papel": "fechamento",
+        "mensagem": "Frase de fechamento reforçando que otimizar o Google não exige expor paciente. Logo Synapsa e chamada para salvar o carrossel.",
+        "visual": "Fundo claro ou noite (a definir na diagramação final) com halos discretos se escuro. Frase de fechamento curta em Poppins 700, centralizada. Logo Synapsa (versão compatível com o fundo escolhido) entre 480–700px de largura. CTA em DM Mono: 'SALVE PRA REVISAR SEU PERFIL HOJE'."
+      }
+    ],
+    "direcao_visual": "Ritmo pergunta(clara)/resposta(escura) alternado ao longo do carrossel, criando um padrão de mito-e-fato reconhecível sem repetir a metáfora de checklist já usada antes. Cartões flutuantes brancos (raio 32px, sombra violeta suave) carregam tanto texto quanto os dois prints reais escolhidos, nunca telas inteiras ilegíveis. Um único dado com fonte oficial do Google sustenta a prova central, com número-herói em slide escuro. Gradiente da marca aparece só em uma palavra na capa e no número-herói da prova.",
+    "evitar": [
+      "barra de busca do Google atravessando os slides",
+      "ranking 1º/2º/3º na capa",
+      "checklist de 4 itens em cartão fixo no canto inferior direito",
+      "qualquer mockup ou menção que pareça depoimento real de paciente",
+      "promessa de resultado terapêutico ou de agenda lotada",
+      "ilustração figurativa (pessoas, estrelas decorativas complexas, ícones de banco de imagem)",
+      "exibir tela inteira da plataforma como miniatura ilegível"
+    ]
+  },
+  "dia": "terca",
+  "hora": "11:30",
+  "fontes": [
+    {
+      "dado": "Perfis completos no Google têm 70% mais chance de atrair visita ao local",
+      "fonte": "Google — Perfil da Empresa (Google Business Profile)",
+      "url": "https://www.google.com/business/"
+    },
+    {
+      "dado": "O sigilo profissional é dever do psicólogo, não escolha do paciente",
+      "fonte": "Conselho Federal de Psicologia — Código de Ética Profissional do Psicólogo",
+      "url": "https://cfp.org.br"
+    }
+  ],
+  "assets": [
+    {
+      "placeholder": "{{MEDIA_01}}",
+      "arquivo": "_previews_tmp/demonstracao-publico.jpg",
+      "tipo": "produto"
+    },
+    {
+      "placeholder": "{{MEDIA_03}}",
+      "arquivo": "_previews_tmp/psicologo-perfil-publico.jpg",
+      "tipo": "produto"
+    }
+  ],
+  "qualidade": {
+    "tentativas": 1,
+    "layouts": [
+      "1:3:5|4:4:5",
+      "1:1:4",
+      "",
+      "1:6:4",
+      "1:1:3",
+      "2:3:17|2:5:2",
+      "1:1:3",
+      "1:1:4"
+    ]
+  },
+  "status": "pendente",
+  "erros": [],
+  "arquivos": [
+    "01.jpg",
+    "02.jpg",
+    "03.jpg",
+    "04.jpg",
+    "05.jpg",
+    "06.jpg",
+    "07.jpg",
+    "08.jpg"
+  ],
+  "contato": "contato.jpg"
+}

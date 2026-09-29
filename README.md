@@ -10,13 +10,15 @@ Quem implementa: um dev ou o Claude Code. Este README basta sozinho.
 ```
 segunda 08:00 (cron)
   1. plan      → escolhe 3 temas + 3 direções de arte que não foram usados recentemente
-  2. generate  → o Claude Code (assinatura) escreve o conteúdo E o HTML de cada carrossel (visual novo a cada vez)
-  3. render    → o Playwright tira um PNG 1080×1350 de cada slide
-  4. lint      → confere tamanho mínimo de texto, se algo vazou da área, contraste, logo, fonte dos dados → se falhar, pede ao Claude para corrigir (até 2x)
-  5. commit    → sobe pra main com status "pendente" (item que falhar o lint 2x fica "erro-lint" e não notifica nem publica)
-  6. notificar → manda 1 email (via Resend) por carrossel pendente, com as imagens + botão "Aprovar e publicar"
+  2. assets    → encontra prints e materiais reais da Synapsa relevantes para o tema
+  3. brief     → cria primeiro a estratégia editorial, a narrativa e a seleção de assets
+  4. generate  → transforma o briefing em conteúdo e composição visual autoral
+  5. render    → o Playwright gera JPEG 1080×1350 e uma folha de contato
+  6. lint      → confere texto, margens, contraste, imagens, logo, repetição de layout e uso de assets → se falhar, pede correção (até 2x)
+  7. commit    → sobe pra main com status "pendente" (item que falhar o lint 2x fica "erro-lint" e não notifica nem publica)
+  8. notificar → manda 1 email (via Resend) por carrossel pendente, com as imagens + botão "Aprovar e publicar"
                  clique no botão → bate num Cloudflare Worker → marca "aprovado" no meta.json direto no GitHub
-  7. publish   → de hora em hora: publica pela Instagram Graph API os itens "aprovado" cuja data agendada já chegou
+  9. publish   → de hora em hora: publica pela Instagram Graph API os itens "aprovado" cuja data agendada já chegou
 ```
 **A única ação humana é clicar no botão do email.** Sem terminal, sem GitHub, sem rodar script. Itens com `status: "erro-lint"` (falharam a checagem de qualidade 2x) não geram email e nunca publicam sozinhos.
 
@@ -31,6 +33,7 @@ config/agenda.json        quantos posts por semana e em que dias/horários
 state/historico.json      temas e direções já usados (evita repetição)
 assets/synapsa-logo.png   logo com fundo transparente (para fundos claros)
 assets/synapsa-logo-escuro.png  logo para fundos escuros
+assets/library/           mídia curada que também fica disponível no CI (opcional)
 referencia/               carrossel "O que é SEO" (PNGs): o padrão de QUALIDADE a seguir, não de layout
 src/*.mjs                 plan, generate, render, notificar, publish
 worker/                   Cloudflare Worker que recebe o clique de "Aprovar" do email
@@ -52,6 +55,20 @@ worker/                   Cloudflare Worker que recebe o clique de "Aprovar" do 
    - `APPROVAL_WORKER_URL` (variável): URL pública do Worker (ex. `https://synapsa-aprovar.<subdomínio>.workers.dev`).
 3. Rodar localmente: `node src/run-week.mjs` → gera `output/AAAA-MM-DD/<slug>/` com status `"pendente"`.
 
+### Biblioteca real da Synapsa
+
+Localmente, a automação detecta a raiz da Synapsa dois níveis acima deste repositório. Para usar outra pasta, defina `SYNAPSA_MEDIA_ROOT`.
+
+Coleções lidas automaticamente: `_previews_tmp`, `Prints uso video`, `Prints plat psi`, `Prints plat paci`, criativos de Marketing e `assets/library`. Pastas pessoais, WhatsApp, equipe e eventos ficam fora por segurança.
+
+Para conferir o que será oferecido à IA para um tema:
+
+```bash
+npm run assets -- "Lembretes automáticos de consulta"
+```
+
+O GitHub Actions não enxerga arquivos que existem somente no computador. Assets que precisem ser usados no agendamento em nuvem devem ser revisados, anonimizados e adicionados a `assets/library/`.
+
 ## O Worker de aprovação (`worker/`)
 Um Cloudflare Worker sem framework, um arquivo só (`worker/index.js`). Recebe `GET /aprovar?item=<pasta>&sig=<hmac>`, confere a assinatura com `APPROVAL_SECRET`, e usa a API do GitHub (`GITHUB_TOKEN`, um PAT com permissão de escrita só neste repo) pra marcar `status: "aprovado"` no `meta.json` correspondente.
 
@@ -70,10 +87,11 @@ npx wrangler secret put GITHUB_TOKEN      # PAT (Contents: Read/Write) só deste
 ## Por que o visual varia sem sair da marca
 O Claude **não** preenche um template. Ele recebe:
 - `BRAND.md`: o que nunca muda;
-- uma **direção de arte sorteada** (`DIRECOES.md`), com layout-herói, metáfora visual, ritmo claro/escuro e escala tipográfica;
+- um briefing editorial criado antes do layout, com família, objetivo, narrativa e assets reais;
+- uma direção de arte (`DIRECOES.md`) usada como repertório e adaptada ao tema;
 - o histórico das últimas 6 semanas, para não repetir combinação nem metáfora.
 
-Ele escreve um HTML próprio para cada carrossel. O lint garante o piso de qualidade.
+Ele escreve um HTML próprio para cada carrossel. O lint garante o piso de qualidade e rejeita composições consecutivas idênticas. Uma folha `contato.jpg` permite avaliar todos os slides no email.
 
 ## Limitações conhecidas
 - A API de publicação do Instagram tem limite de ~50 posts/24h e não tem agendamento nativo. Por isso o agendamento é o cron do `publish`.

@@ -30,12 +30,15 @@ for(const p of await achar('output').catch(()=>[])){
   const sig=assinar(item);
   const aprovarUrl=`${APPROVAL_WORKER_URL}/aprovar?item=${encodeURIComponent(item)}&sig=${sig}`;
   const imgs=m.arquivos.map(a=>`${PUBLIC_BASE_URL}/${item}/${a}`);
+  const contato=m.contato?`${PUBLIC_BASE_URL}/${item}/${m.contato}`:null;
   const legenda=await fs.readFile(path.join(path.dirname(p),'legenda.txt'),'utf8').catch(()=>'');
 
   const html=`
     <div style="font-family:sans-serif;max-width:480px;margin:0 auto">
       <h2>Novo carrossel: ${m.tema}</h2>
+      <p><strong>Família editorial:</strong> ${m.familia||'—'}</p>
       <p>Aprovando, publica no Instagram na hora.</p>
+      ${contato?`<img src="${contato}" width="100%" style="border-radius:12px;margin-bottom:18px"><p style="color:#666">Visão geral do carrossel</p>`:''}
       ${imgs.map(u=>`<img src="${u}" width="100%" style="border-radius:12px;margin-bottom:8px">`).join('')}
       <p style="white-space:pre-wrap;background:#f5f5f5;padding:12px;border-radius:8px">${legenda}</p>
       <p style="text-align:center;margin:24px 0">

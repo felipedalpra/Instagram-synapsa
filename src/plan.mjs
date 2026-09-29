@@ -13,6 +13,6 @@ export async function plan(){
     let d; do { d={metafora:pick(E[kM]),ritmo:pick(E[kR]),composicao:pick(E[kC]),gancho:pick(E[kV])}; }
     while (combos.has(JSON.stringify(d)) || recentes.slice(-3).some(r=>r.direcao.metafora===d.metafora));
     combos.add(JSON.stringify(d));
-    return {tema,direcao:d,dia:ag.dias[i],hora:ag.hora,historico:recentes.map(r=>r.metafora_usada)};
+    return {tema,direcao:d,dia:ag.dias[i],hora:ag.hora,historico:recentes.map(r=>[r.familia,r.metafora_usada].filter(Boolean).join(' — '))};
   });
 }

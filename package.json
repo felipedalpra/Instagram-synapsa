@@ -4,6 +4,8 @@
   "private": true,
   "scripts": {
     "semana": "node src/run-week.mjs",
+    "assets": "node src/catalog-assets.mjs",
+    "test": "node --test",
     "publicar": "node src/publish.mjs",
     "aprovar": "node src/aprovar.mjs"
   },
