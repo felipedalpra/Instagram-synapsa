@@ -6,15 +6,28 @@ const mime=file=>({'.png':'image/png','.jpg':'image/jpeg','.jpeg':'image/jpeg','
 const dataUrl=(buffer,type)=>`data:${type};base64,${buffer.toString('base64')}`;
 
 async function materialize(html,assets){
-  const replacements=[['{{LOGO_CLARO}}','assets/synapsa-logo.png'],['{{LOGO_ESCURO}}','assets/synapsa-logo-escuro.png']];
-  for(const asset of assets||[]) replacements.push([asset.placeholder,asset.path]);
+  const replacements=[
+    {placeholder:'{{LOGO_CLARO}}',path:'assets/synapsa-logo.png'},
+    {placeholder:'{{LOGO_ESCURO}}',path:'assets/synapsa-logo-escuro.png'},
+    ...(assets||[])
+  ];
   const used=[]; const missing=[];
-  for(const [placeholder,file] of replacements){
+  for(const asset of replacements){
+    const {placeholder}=asset;
     if(!html.includes(placeholder)) continue;
     try{
-      html=html.replaceAll(placeholder,dataUrl(await fs.readFile(file),mime(file)));
+      let buffer,type;
+      if(asset.url){
+        const response=await fetch(asset.url);
+        if(!response.ok) throw new Error(`HTTP ${response.status}`);
+        buffer=Buffer.from(await response.arrayBuffer());
+        type=response.headers.get('content-type')||'image/jpeg';
+      }else{
+        buffer=await fs.readFile(asset.path); type=mime(asset.path);
+      }
+      html=html.replaceAll(placeholder,dataUrl(buffer,type));
       if(placeholder.startsWith('{{MEDIA_')) used.push(placeholder);
-    }catch{ missing.push(`${placeholder}: ${file}`); }
+    }catch(error){ missing.push(`${placeholder}: ${asset.path||asset.url} (${error.message})`); }
   }
   return {html,used,missing,unresolved:[...html.matchAll(/{{(?:LOGO|MEDIA)_[A-Z0-9_]+}}/g)].map(m=>m[0])};
 }

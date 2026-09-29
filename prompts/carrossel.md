@@ -5,6 +5,9 @@ Transforme o BRIEFING EDITORIAL em UM carrossel de Instagram sofisticado, útil 
 ## Princípios de qualidade
 - Cada slide tem uma função narrativa clara. Não produza sete pôsteres soltos.
 - Crie uma ideia visual que evolui, mas varie escala, enquadramento e composição.
+- O fundo não pode cair automaticamente no gradiente claro ou no fundo noite com dois halos. Escolha de 2 a 4 tratamentos em `sistema_fundos` e use-os como uma família coerente.
+- Repertório permitido: fotografia full-bleed com overlay, recorte fotográfico em bloco, fundo sólido da marca, papel editorial quase branco, campo dividido, faixa cromática, macro de interface, textura sutil e espaço negativo intencional.
+- Não use o mesmo tratamento de fundo em mais de 3 slides, salvo quando uma fotografia contínua justificar.
 - Não repita a mesma posição de título em mais de 2 slides consecutivos.
 - Evite grandes áreas vazias sem intenção, títulos isolados no rodapé e padrões decorativos repetidos em todos os slides.
 - Use de 1 a 3 níveis de hierarquia e no máximo 45 palavras por slide, salvo uma fonte curta.
@@ -18,7 +21,9 @@ Transforme o BRIEFING EDITORIAL em UM carrossel de Instagram sofisticado, útil 
 - No HTML, o `src` deve ser exatamente o placeholder fornecido: `<img class="media-real" src="{{MEDIA_01}}">`.
 - Todo asset real deve ter `class="media-real"`, `object-fit` explícito e enquadramento intencional.
 - Nunca exponha caminhos de arquivo no texto visível.
-- Não use imagens externas, URLs inventadas ou fotos de banco.
+- Não use imagens externas ou fotos de banco fora dos placeholders fornecidos. Assets marcados como `pexels` estão licenciados e podem ser usados.
+- Fotografia do Pexels não pode sugerir que a pessoa retratada usa, recomenda ou representa a Synapsa; use-a como cena contextual.
+- Evite rostos identificáveis em temas sensíveis, sofrimento, diagnóstico, sigilo ou resultados terapêuticos. Prefira mãos, ambiente, objetos e enquadramentos sem identidade.
 - Elementos que sangram propositalmente devem receber `data-bleed="true"`.
 
 Referência de qualidade, não de layout: o carrossel “O que é SEO” em `referencia/`. Ele usa interface como prova visual, constrói progressão e alterna informação, impacto e respiro.
@@ -46,5 +51,6 @@ Saída: APENAS um JSON válido:
 - Texto mínimo de 24px e margem de segurança de 96px.
 - Defina largura máxima para todo bloco de texto e `overflow-wrap` quando necessário.
 - Mantenha contraste alto. Texto secundário também precisa continuar legível.
+- Em foto full-bleed, aplique overlay suficiente para o texto atingir contraste alto e preserve o foco principal da imagem.
 - A capa deve funcionar como miniatura: um gancho, uma imagem ou forma dominante e leitura imediata.
 - O HTML deve ser autocontido, exceto pelos placeholders fornecidos.

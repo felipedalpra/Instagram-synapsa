@@ -1,5 +1,6 @@
 import fs from 'node:fs/promises';
 import path from 'node:path';
+import {discoverPexels} from './pexels.mjs';
 
 const IMAGE_EXTENSIONS=new Set(['.png','.jpg','.jpeg','.webp']);
 const COLLECTIONS=[
@@ -15,7 +16,7 @@ const COLLECTIONS=[
 
 const TOPIC_HINTS=[
   [/agenda|lembrete|falta|cancel|consulta/,['agenda','consulta','dashboard','atendimento','calendario']],
-  [/ia|lyra|inteligencia/,['lyra','ia','workspace']],
+  [/\bia\b|lyra|inteligencia/,['lyra','ia','workspace']],
   [/gestao|planilha|tempo|tarefa|burnout/,['dashboard','workspace','financeiro','relatorio']],
   [/prontuario|tratamento|adesao|sessao|paciente/,['paciente','praticas','escalas','relatorio']],
   [/seo|google|perfil|divulgacao/,['perfil-publico','demonstracao-publico','biohub']],
@@ -77,7 +78,23 @@ export async function discoverAssets(theme,{limit=12,root=synapsaRoot()}={}){
   }));
 }
 
+export async function discoverMedia(theme,{localLimit=8,stockLimit=5,root=synapsaRoot()}={}){
+  const [local,stock]=await Promise.all([
+    discoverAssets(theme,{limit:localLimit,root}),
+    discoverPexels(theme,{limit:stockLimit})
+  ]);
+  return [...local,...stock].map((asset,index)=>({
+    ...asset,
+    id:`MEDIA_${String(index+1).padStart(2,'0')}`,
+    placeholder:`{{MEDIA_${String(index+1).padStart(2,'0')}}}`
+  }));
+}
+
 export function assetsForPrompt(assets){
   if(!assets.length) return 'Nenhum asset real disponível neste ambiente. Use recursos CSS e não invente telas do produto.';
-  return assets.map(a=>`${a.placeholder} | ${a.tipo} | ${a.arquivo}`).join('\n');
+  return assets.map(a=>[
+    a.placeholder,a.tipo,a.arquivo,
+    a.descricao?`descrição: ${a.descricao}`:null,
+    a.fotografo?`crédito na legenda: ${a.fotografo} via Pexels`:null
+  ].filter(Boolean).join(' | ')).join('\n');
 }

@@ -41,7 +41,13 @@
 - Cabeçalho mono em cada slide: `TEMA · NN/TT` (a posição pode variar).
 
 ## Proibido
-Emoji nos slides, fotos de banco de imagem, ilustração em SVG figurativa (pessoas, cérebros, lâmpadas), gradientes arco-íris, sombras pesadas, texto vazando da área e mais de 2 cores de fundo por carrossel.
+Emoji nos slides, fotos de banco fora das fontes aprovadas, ilustração em SVG figurativa (pessoas, cérebros, lâmpadas), gradientes arco-íris, sombras pesadas e texto vazando da área.
+
+## Fundos
+- As cores continuam sendo as da marca, mas o fundo não precisa ser sempre o gradiente claro ou noite com halos.
+- Tratamentos permitidos: foto full-bleed com overlay, recorte fotográfico, sólido azul/violeta/roxo/noite, papel claro editorial, campo dividido, macro de interface, faixa cromática e textura sutil.
+- Cada carrossel escolhe um sistema próprio com 2 a 4 tratamentos. O sistema deve ser coerente dentro da peça e diferente do histórico recente.
+- Halos radiais são um recurso possível, não o fundo padrão.
 
 ## Assets reais e privacidade
 - Prefira prints reais da plataforma, recortes de funcionalidades, frames de demonstração e materiais aprovados da marca.
@@ -49,3 +55,5 @@ Emoji nos slides, fotos de banco de imagem, ilustração em SVG figurativa (pess
 - Não use arquivos de equipe, eventos ou WhatsApp automaticamente; eles exigem curadoria e autorização humana antes de entrar em `assets/library/`.
 - Prints devem ser grandes o bastante para cumprir uma função visual. Não use uma tela inteira como miniatura ilegível.
 - Não invente interface nem altere um print de modo que sugira uma funcionalidade inexistente.
+- Fotos do Pexels podem criar contexto e atmosfera, mas nunca podem parecer depoimento, endosso ou representação de paciente real.
+- Quando uma foto do Pexels for usada, o crédito do fotógrafo e o link da página entram automaticamente na legenda.

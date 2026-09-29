@@ -21,6 +21,11 @@ Todo carrossel parte de uma combinação sem repetir as últimas 6. O briefing e
 - escuro-dominante com 1 slide claro de respiro
 - alternado claro/escuro
 - claro contínuo com um elemento que "atravessa" slides (continua na borda do próximo)
+- fotografia-full-bleed com overlays alternados e slides tipográficos de respiro
+- papel-editorial com faixas sólidas assimétricas da marca
+- macro-de-interface alternado com fundos sólidos azul, violeta ou noite
+- campo-dividido entre imagem e cor, mudando a proporção a cada slide
+- recortes-fotograficos sobre fundo quase branco, com composição de revista
 
 ## C. Composição
 - ancorado-em-baixo (título embaixo, respiro em cima)
@@ -43,3 +48,4 @@ Todo carrossel parte de uma combinação sem repetir as últimas 6. O briefing e
 - dado-como-história: parte de um dado verificável e mostra o que ele significa na rotina
 - bastidores-synapsa: pessoas, produto e processo reais constroem proximidade com a marca
 - comparacao-de-processo: contrasta formas de trabalhar, nunca resultados ou pacientes
+- narrativa-fotografica: usa cenas contextuais licenciadas quando a fotografia acrescenta emoção ou reconhecimento

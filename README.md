@@ -11,6 +11,7 @@ Quem implementa: um dev ou o Claude Code. Este README basta sozinho.
 segunda 08:00 (cron)
   1. plan      → escolhe 3 temas + 3 direções de arte que não foram usados recentemente
   2. assets    → encontra prints e materiais reais da Synapsa relevantes para o tema
+                e, quando fizer sentido, fotos contextuais licenciadas do Pexels
   3. brief     → cria primeiro a estratégia editorial, a narrativa e a seleção de assets
   4. generate  → transforma o briefing em conteúdo e composição visual autoral
   5. render    → o Playwright gera JPEG 1080×1350 e uma folha de contato
@@ -45,6 +46,7 @@ worker/                   Cloudflare Worker que recebe o clique de "Aprovar" do 
 2. Secrets / .env:
    - **IA pela assinatura Claude Pro/Max (sem API paga):** rode `claude setup-token` uma vez e salve o token como secret `CLAUDE_CODE_OAUTH_TOKEN`. Localmente, basta estar logado no `claude`.
    - `CLAUDE_MODEL` (opcional; senão usa o padrão do Claude Code)
+   - `PEXELS_API_KEY` (opcional): habilita busca de fotos públicas licenciadas. Sem a chave, a geração continua só com assets Synapsa e CSS.
    - O consumo sai do limite da assinatura: ~3 carrosséis/semana com até 2 correções cada cabe folgado no Pro.
    - `IG_USER_ID`, `IG_ACCESS_TOKEN`: conta Instagram **Business/Creator** ligada a uma Página do Facebook, app Meta com as permissões `instagram_basic`, `instagram_content_publish` e `pages_read_engagement`. Use um token de longa duração e renove a cada ~60 dias.
    - `PUBLIC_BASE_URL`: a Graph API só aceita **URL pública** de imagem. Sirva `output/` via GitHub Pages, Vercel, S3 ou Cloudinary.
@@ -68,6 +70,18 @@ npm run assets -- "Lembretes automáticos de consulta"
 ```
 
 O GitHub Actions não enxerga arquivos que existem somente no computador. Assets que precisem ser usados no agendamento em nuvem devem ser revisados, anonimizados e adicionados a `assets/library/`.
+
+### Fotos públicas do Pexels
+
+Quando `PEXELS_API_KEY` está configurada, a automação busca até 5 opções verticais relacionadas ao tema. O briefing decide entre quatro modos: `synapsa`, `pexels`, `grafico` ou `hibrido`. Portanto, uma foto só é usada quando melhora a narrativa; telas reais continuam prioritárias em conteúdos de produto.
+
+O arquivo selecionado é incorporado ao HTML durante a renderização. O nome do fotógrafo, a licença e a página original ficam no `meta.json`, e o crédito é acrescentado automaticamente à legenda.
+
+Para habilitar no GitHub Actions:
+
+```bash
+gh secret set PEXELS_API_KEY
+```
 
 ## O Worker de aprovação (`worker/`)
 Um Cloudflare Worker sem framework, um arquivo só (`worker/index.js`). Recebe `GET /aprovar?item=<pasta>&sig=<hmac>`, confere a assinatura com `APPROVAL_SECRET`, e usa a API do GitHub (`GITHUB_TOKEN`, um PAT com permissão de escrita só neste repo) pra marcar `status: "aprovado"` no `meta.json` correspondente.
